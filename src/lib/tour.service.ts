@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {NavigationStart, Router} from '@angular/router';
+import {Event, NavigationStart, Router} from '@angular/router';
 import type {UrlSegment} from '@angular/router';
 
 import { TourAnchorDirective } from './tour-anchor.directive';
@@ -181,9 +181,9 @@ export class TourService<T extends IStepOption = IStepOption> {
   }
 
   public register(anchorId: string, anchor: TourAnchorDirective): void {
-    if (!anchorId)
+    if (!anchorId) {
       return;
-    if (this.anchors[anchorId]) {
+    } else if (this.anchors[anchorId]) {
       throw new Error('anchorId ' + anchorId + ' already registered!');
     }
     this.anchors[anchorId] = anchor;
@@ -191,8 +191,9 @@ export class TourService<T extends IStepOption = IStepOption> {
   }
 
   public unregister(anchorId: string): void {
-    if (!anchorId)
+    if (!anchorId) {
       return;
+    }
     delete this.anchors[anchorId];
     this.anchorUnregister$.next(anchorId);
   }
