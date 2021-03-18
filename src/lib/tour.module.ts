@@ -8,15 +8,13 @@ import { TourService } from './tour.service';
 @NgModule({
     declarations: [TourHotkeyListenerComponent],
     exports: [TourHotkeyListenerComponent],
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule]
 })
 export class TourModule {
     public static forRoot(): ModuleWithProviders<TourModule> {
         return {
             ngModule: TourModule,
-            providers: [
-                TourService,
-            ],
+            providers: [TourService]
         };
     }
 }

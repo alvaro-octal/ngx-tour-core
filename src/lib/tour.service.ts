@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Event, NavigationStart, Router} from '@angular/router';
-import type {UrlSegment} from '@angular/router';
+import { Event, NavigationStart, Router } from '@angular/router';
+import type { UrlSegment } from '@angular/router';
 
 import { TourAnchorDirective } from './tour-anchor.directive';
 import { Subject, Observable, merge as mergeStatic } from 'rxjs';
@@ -94,7 +94,10 @@ export class TourService<T extends IStepOption = IStepOption> {
     this.goToStep(this.loadStep(stepId));
     this.start$.next();
     this.router.events
-      .pipe(filter(event => event instanceof NavigationStart), first())
+      .pipe(
+        filter(event => event instanceof NavigationStart),
+        first()
+      )
       .subscribe(() => {
         if (this.currentStep && this.currentStep.hasOwnProperty('route')) {
           this.hideStep(this.currentStep);
@@ -139,38 +142,27 @@ export class TourService<T extends IStepOption = IStepOption> {
 
   public next(): void {
     if (this.hasNext(this.currentStep)) {
-      this.goToStep(
-        this.loadStep(
-          this.currentStep.nextStep || this.steps.indexOf(this.currentStep) + 1
-        )
-      );
+      this.goToStep(this.loadStep(this.currentStep.nextStep || this.steps.indexOf(this.currentStep) + 1));
     }
   }
 
   public hasNext(step: T): boolean {
     if (!step) {
-      console.warn('Can\'t get next step. No currentStep.');
+      console.warn("Can't get next step. No currentStep.");
       return false;
     }
-    return (
-      step.nextStep !== undefined ||
-      this.steps.indexOf(step) < this.steps.length - 1
-    );
+    return step.nextStep !== undefined || this.steps.indexOf(step) < this.steps.length - 1;
   }
 
   public prev(): void {
     if (this.hasPrev(this.currentStep)) {
-      this.goToStep(
-        this.loadStep(
-          this.currentStep.prevStep || this.steps.indexOf(this.currentStep) - 1
-        )
-      );
+      this.goToStep(this.loadStep(this.currentStep.prevStep || this.steps.indexOf(this.currentStep) - 1));
     }
   }
 
   public hasPrev(step: T): boolean {
     if (!step) {
-      console.warn('Can\'t get previous step. No currentStep.');
+      console.warn("Can't get previous step. No currentStep.");
       return false;
     }
     return step.prevStep !== undefined || this.steps.indexOf(step) > 0;
@@ -208,13 +200,11 @@ export class TourService<T extends IStepOption = IStepOption> {
 
   private goToStep(step: T): void {
     if (!step) {
-      console.warn('Can\'t go to non-existent step');
+      console.warn("Can't go to non-existent step");
       this.end();
       return;
     }
-    let navigatePromise: Promise<boolean> = new Promise(resolve =>
-      resolve(true)
-    );
+    let navigatePromise: Promise<boolean> = new Promise(resolve => resolve(true));
     if (step.route !== undefined && typeof step.route === 'string') {
       navigatePromise = this.router.navigateByUrl(step.route);
     } else if (step.route && Array.isArray(step.route)) {
@@ -242,7 +232,10 @@ export class TourService<T extends IStepOption = IStepOption> {
     this.currentStep = step;
     this.showStep(this.currentStep);
     this.router.events
-      .pipe(filter(event => event instanceof NavigationStart), first())
+      .pipe(
+        filter(event => event instanceof NavigationStart),
+        first()
+      )
       .subscribe(() => {
         if (this.currentStep && this.currentStep.hasOwnProperty('route')) {
           this.hideStep(this.currentStep);
@@ -253,9 +246,7 @@ export class TourService<T extends IStepOption = IStepOption> {
   private showStep(step: T): void {
     const anchor = this.anchors[step && step.anchorId];
     if (!anchor) {
-      console.warn(
-        'Can\'t attach to unregistered anchor with id ' + step.anchorId
-      );
+      console.warn("Can't attach to unregistered anchor with id " + step.anchorId);
       this.end();
       return;
     }

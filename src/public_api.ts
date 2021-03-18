@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ngx-tour-core
+ * Public API Surface of @ngx-tour/core
  */
 
 export { TourModule, TourService } from './lib/tour.module';

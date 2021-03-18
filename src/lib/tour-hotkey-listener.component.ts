@@ -14,10 +14,7 @@ export class TourHotkeyListenerComponent {
    */
   @HostListener('window:keydown.Escape')
   public onEscapeKey(): void {
-    if (
-      this.tourService.getStatus() === TourState.ON &&
-      this.tourService.isHotkeysEnabled()
-    ) {
+    if (this.tourService.getStatus() === TourState.ON && this.tourService.isHotkeysEnabled()) {
       this.tourService.end();
     }
   }
