@@ -24,6 +24,7 @@
     "typescript": "~4.1.5"
   },
   "scripts": {
+    "postversion": "copyfiles -r package.json ../",
     "upgrade": "ncu -u -x typescript,rxjs",
     "build": "ng build @ngx-tour/core --prod && cpx CHANGELOG.md dist/",
     "publish": "cd dist; npm publish --access=public; cd .."
