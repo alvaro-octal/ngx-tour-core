@@ -1,3 +1,10 @@
+## [11.0.7](https://github.com/alvaro-octal/ngx-tour-core/compare/v11.0.6...v11.0.7) (2021-03-18)
+
+
+### Fix
+
+* Release Script ([50d629c](https://github.com/alvaro-octal/ngx-tour-core/commit/50d629cb8cd94a59ec6074597a0fa0ea3671f7ef))
+
 ## [11.0.6](https://github.com/alvaro-octal/ngx-tour-core/compare/v11.0.5...v11.0.6) (2021-03-18)
 
 
