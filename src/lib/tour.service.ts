@@ -24,7 +24,7 @@ export interface IStepOption {
 export enum TourState {
   OFF,
   ON,
-  PAUSED
+  PAUSED,
 }
 
 @Injectable()
@@ -39,23 +39,23 @@ export class TourService<T extends IStepOption = IStepOption> {
   public anchorRegister$: Subject<string> = new Subject();
   public anchorUnregister$: Subject<string> = new Subject();
   public events$: Observable<{ name: string; value: any }> = mergeStatic(
-    this.stepShow$.pipe(map(value => ({ name: 'stepShow', value }))),
-    this.stepHide$.pipe(map(value => ({ name: 'stepHide', value }))),
-    this.initialize$.pipe(map(value => ({ name: 'initialize', value }))),
-    this.start$.pipe(map(value => ({ name: 'start', value }))),
-    this.end$.pipe(map(value => ({ name: 'end', value }))),
-    this.pause$.pipe(map(value => ({ name: 'pause', value }))),
-    this.resume$.pipe(map(value => ({ name: 'resume', value }))),
+    this.stepShow$.pipe(map((value) => ({ name: 'stepShow', value }))),
+    this.stepHide$.pipe(map((value) => ({ name: 'stepHide', value }))),
+    this.initialize$.pipe(map((value) => ({ name: 'initialize', value }))),
+    this.start$.pipe(map((value) => ({ name: 'start', value }))),
+    this.end$.pipe(map((value) => ({ name: 'end', value }))),
+    this.pause$.pipe(map((value) => ({ name: 'pause', value }))),
+    this.resume$.pipe(map((value) => ({ name: 'resume', value }))),
     this.anchorRegister$.pipe(
-      map(value => ({
+      map((value) => ({
         name: 'anchorRegister',
-        value
+        value,
       }))
     ),
     this.anchorUnregister$.pipe(
-      map(value => ({
+      map((value) => ({
         name: 'anchorUnregister',
-        value
+        value,
       }))
     )
   );
@@ -72,7 +72,7 @@ export class TourService<T extends IStepOption = IStepOption> {
   public initialize(steps: T[], stepDefaults?: T): void {
     if (steps && steps.length > 0) {
       this.status = TourState.OFF;
-      this.steps = steps.map(step => Object.assign({}, stepDefaults, step));
+      this.steps = steps.map((step) => Object.assign({}, stepDefaults, step));
       this.initialize$.next(this.steps);
     }
   }
@@ -95,7 +95,7 @@ export class TourService<T extends IStepOption = IStepOption> {
     this.start$.next();
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationStart),
+        filter((event) => event instanceof NavigationStart),
         first()
       )
       .subscribe(() => {
@@ -142,7 +142,11 @@ export class TourService<T extends IStepOption = IStepOption> {
 
   public next(): void {
     if (this.hasNext(this.currentStep)) {
-      this.goToStep(this.loadStep(this.currentStep.nextStep || this.steps.indexOf(this.currentStep) + 1));
+      this.goToStep(
+        this.loadStep(
+          this.currentStep.nextStep || this.steps.indexOf(this.currentStep) + 1
+        )
+      );
     }
   }
 
@@ -151,12 +155,19 @@ export class TourService<T extends IStepOption = IStepOption> {
       console.warn("Can't get next step. No currentStep.");
       return false;
     }
-    return step.nextStep !== undefined || this.steps.indexOf(step) < this.steps.length - 1;
+    return (
+      step.nextStep !== undefined ||
+      this.steps.indexOf(step) < this.steps.length - 1
+    );
   }
 
   public prev(): void {
     if (this.hasPrev(this.currentStep)) {
-      this.goToStep(this.loadStep(this.currentStep.prevStep || this.steps.indexOf(this.currentStep) - 1));
+      this.goToStep(
+        this.loadStep(
+          this.currentStep.prevStep || this.steps.indexOf(this.currentStep) - 1
+        )
+      );
     }
   }
 
@@ -204,13 +215,15 @@ export class TourService<T extends IStepOption = IStepOption> {
       this.end();
       return;
     }
-    let navigatePromise: Promise<boolean> = new Promise(resolve => resolve(true));
+    let navigatePromise: Promise<boolean> = new Promise((resolve) =>
+      resolve(true)
+    );
     if (step.route !== undefined && typeof step.route === 'string') {
       navigatePromise = this.router.navigateByUrl(step.route);
     } else if (step.route && Array.isArray(step.route)) {
       navigatePromise = this.router.navigate(step.route);
     }
-    navigatePromise.then(navigated => {
+    navigatePromise.then((navigated) => {
       if (navigated !== false) {
         setTimeout(() => this.setCurrentStep(step));
       }
@@ -221,7 +234,7 @@ export class TourService<T extends IStepOption = IStepOption> {
     if (typeof stepId === 'number') {
       return this.steps[stepId];
     } else {
-      return this.steps.find(step => step.stepId === stepId);
+      return this.steps.find((step) => step.stepId === stepId);
     }
   }
 
@@ -233,7 +246,7 @@ export class TourService<T extends IStepOption = IStepOption> {
     this.showStep(this.currentStep);
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationStart),
+        filter((event) => event instanceof NavigationStart),
         first()
       )
       .subscribe(() => {
@@ -246,7 +259,9 @@ export class TourService<T extends IStepOption = IStepOption> {
   private showStep(step: T): void {
     const anchor = this.anchors[step && step.anchorId];
     if (!anchor) {
-      console.warn("Can't attach to unregistered anchor with id " + step.anchorId);
+      console.warn(
+        "Can't attach to unregistered anchor with id " + step.anchorId
+      );
       this.end();
       return;
     }

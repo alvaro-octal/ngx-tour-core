@@ -4,7 +4,7 @@ import { TourService, TourState } from './tour.service';
 
 @Component({
   selector: 'tour-hotkey-listener',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class TourHotkeyListenerComponent {
   constructor(public tourService: TourService) {}
@@ -14,7 +14,10 @@ export class TourHotkeyListenerComponent {
    */
   @HostListener('window:keydown.Escape')
   public onEscapeKey(): void {
-    if (this.tourService.getStatus() === TourState.ON && this.tourService.isHotkeysEnabled()) {
+    if (
+      this.tourService.getStatus() === TourState.ON &&
+      this.tourService.isHotkeysEnabled()
+    ) {
       this.tourService.end();
     }
   }

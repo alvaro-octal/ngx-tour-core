@@ -2,25 +2,25 @@
 
 ### Fix
 
--   Release Script ([50d629c](https://github.com/ngx-tour/ngx-tour-core/commit/50d629cb8cd94a59ec6074597a0fa0ea3671f7ef))
+- Release Script ([50d629c](https://github.com/ngx-tour/ngx-tour-core/commit/50d629cb8cd94a59ec6074597a0fa0ea3671f7ef))
 
 ## [11.0.6](https://github.com/ngx-tour/ngx-tour-core/compare/v11.0.5...v11.0.6) (2021-03-18)
 
 ### Fix
 
--   Release Script ([e5bf3b5](https://github.com/ngx-tour/ngx-tour-core/commit/e5bf3b5c9c642939998b5b849342c4095e75b5d1))
+- Release Script ([e5bf3b5](https://github.com/ngx-tour/ngx-tour-core/commit/e5bf3b5c9c642939998b5b849342c4095e75b5d1))
 
 ## [11.0.5](https://github.com/ngx-tour/ngx-tour-core/compare/v11.0.4...v11.0.5) (2021-03-18)
 
 ### Fix
 
--   Release Script ([8688816](https://github.com/ngx-tour/ngx-tour-core/commit/86888168b33c2277dbd6f96bc759f2e94251b860))
+- Release Script ([8688816](https://github.com/ngx-tour/ngx-tour-core/commit/86888168b33c2277dbd6f96bc759f2e94251b860))
 
 ## [11.0.4](https://github.com/ngx-tour/ngx-tour-core/compare/v11.0.3...v11.0.4) (2021-03-18)
 
 ### Fix
 
--   Release Script ([58e6f21](https://github.com/ngx-tour/ngx-tour-core/commit/58e6f2150d13b77ce47f2889998cbf829c75c809))
+- Release Script ([58e6f21](https://github.com/ngx-tour/ngx-tour-core/commit/58e6f2150d13b77ce47f2889998cbf829c75c809))
 
 <a name="4.2.0"></a>
 
@@ -28,7 +28,7 @@
 
 ### Features
 
--   Support Angular 10
+- Support Angular 10
 
 <a name="4.1.1"></a>
 
@@ -36,7 +36,7 @@
 
 ### Fixes
 
--   Skip undefined tourAnchors
+- Skip undefined tourAnchors
 
 <a name="4.1.0"></a>
 
@@ -44,8 +44,8 @@
 
 ### Features
 
--   Support Angular 8 as peer dependency
--   Support Ivy renderer
+- Support Angular 8 as peer dependency
+- Support Ivy renderer
 
 <a name="4.0.1"></a>
 
@@ -53,7 +53,7 @@
 
 ### Fixes
 
--   NavigationStart only hide currentStep if route is specified eg. routing used
+- NavigationStart only hide currentStep if route is specified eg. routing used
 
 <a name="4.0.0"></a>
 
@@ -61,7 +61,7 @@
 
 ### BREAKING CHANGES
 
--   Require Angular 7 as peer dependency
+- Require Angular 7 as peer dependency
 
 <a name="3.0.0"></a>
 
@@ -69,7 +69,7 @@
 
 ### BREAKING CHANGES
 
--   Require Angular 6 as peer dependency
+- Require Angular 6 as peer dependency
 
 <a name="2.1.0"></a>
 
@@ -77,7 +77,7 @@
 
 ### Features
 
--   Add options to set button text
+- Add options to set button text
 
 <a name="2.0.0"></a>
 
@@ -85,11 +85,11 @@
 
 ### BREAKING CHANGES
 
--   Require Angular 5 as peer dependency
+- Require Angular 5 as peer dependency
 
 ### Features
 
--   TourService allows hotkeys to be disabled/enabled
+- TourService allows hotkeys to be disabled/enabled
 
 <a name="1.1.0"></a>
 
@@ -97,7 +97,7 @@
 
 ### Features
 
--   TourService made generic but defaults to IStepOoption
+- TourService made generic but defaults to IStepOoption
 
 <a name="1.0.3"></a>
 
@@ -105,7 +105,7 @@
 
 ### Bug fixes
 
--   Update zone.js version
+- Update zone.js version
 
 <a name="1.0.2"></a>
 
@@ -113,7 +113,7 @@
 
 ### Bug fixes
 
--   Fix AoT build
+- Fix AoT build
 
 <a name="1.0.1"></a>
 
@@ -121,7 +121,7 @@
 
 ### Bug fixes
 
--   Steps default to an empty array instead of undefined
+- Steps default to an empty array instead of undefined
 
 <a name="1.0.0"></a>
 
@@ -129,4 +129,4 @@
 
 ### BREAKING CHANGES
 
--   Split out to a separate package
+- Split out to a separate package
