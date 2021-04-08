@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/ngx-tour/ngx-tour-core/compare/v11.0.8...v11.1.0) (2021-04-08)
+
+
+### New
+
+* Add asyncAnchor property to steps ([105859b](https://github.com/ngx-tour/ngx-tour-core/commit/105859bc4e8d54b47e9cb2133729a4b4207b91f0))
+
 ## [11.0.8](https://github.com/ngx-tour/ngx-tour-core/compare/v11.0.7...v11.0.8) (2021-04-06)
 
 ### Fix
