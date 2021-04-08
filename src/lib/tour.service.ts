@@ -19,6 +19,7 @@ export interface IStepOption {
   prevBtnTitle?: string;
   nextBtnTitle?: string;
   endBtnTitle?: string;
+  asyncAnchor?: boolean;
 }
 
 export enum TourState {
@@ -66,6 +67,7 @@ export class TourService<T extends IStepOption = IStepOption> {
   public anchors: { [anchorId: string]: TourAnchorDirective } = {};
   private status: TourState = TourState.OFF;
   private isHotKeysEnabled = true;
+  private eventsAnchorRegister: { [name: string]: Subject<boolean> } = {};
 
   constructor(private router: Router) {}
 
@@ -191,6 +193,10 @@ export class TourService<T extends IStepOption = IStepOption> {
     }
     this.anchors[anchorId] = anchor;
     this.anchorRegister$.next(anchorId);
+
+    if (anchorId in this.eventsAnchorRegister) {
+      this.eventsAnchorRegister[anchorId].next(true);
+    }
   }
 
   public unregister(anchorId: string): void {
@@ -257,13 +263,23 @@ export class TourService<T extends IStepOption = IStepOption> {
   }
 
   private showStep(step: T): void {
-    const anchor = this.anchors[step && step.anchorId];
+    let anchor = this.anchors[step && step.anchorId];
     if (!anchor) {
-      console.warn(
-        "Can't attach to unregistered anchor with id " + step.anchorId
-      );
-      this.end();
-      return;
+      if (step.asyncAnchor) {
+        this.eventsAnchorRegister[step.anchorId] = new Subject<boolean>();
+        this.eventsAnchorRegister[step.anchorId].subscribe(() => {
+          anchor = this.anchors[step && step.anchorId];
+          anchor.showTourStep(step);
+          this.stepShow$.next(step);
+        });
+        return;
+      } else {
+        console.warn(
+          "Can't attach to unregistered anchor with id " + step.anchorId
+        );
+        this.end();
+        return;
+      }
     }
     anchor.showTourStep(step);
     this.stepShow$.next(step);
