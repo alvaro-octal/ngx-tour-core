@@ -1,3 +1,10 @@
+# [11.2.0](https://github.com/ngx-tour/ngx-tour-core/compare/v11.1.0...v11.2.0) (2021-04-12)
+
+
+### Chore
+
+* Update dependencies ([51f60d1](https://github.com/ngx-tour/ngx-tour-core/commit/51f60d19cfa9e47ad530692ae3c4e45e3ab13361))
+
 # [11.1.0](https://github.com/ngx-tour/ngx-tour-core/compare/v11.0.8...v11.1.0) (2021-04-08)
 
 
