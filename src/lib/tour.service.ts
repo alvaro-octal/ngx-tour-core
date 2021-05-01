@@ -269,8 +269,10 @@ export class TourService<T extends IStepOption = IStepOption> {
         this.eventsAnchorRegister[step.anchorId] = new Subject<boolean>();
         this.eventsAnchorRegister[step.anchorId].subscribe(() => {
           anchor = this.anchors[step && step.anchorId];
-          anchor.showTourStep(step);
-          this.stepShow$.next(step);
+          setTimeout(() => {
+            anchor.showTourStep(step);
+            this.stepShow$.next(step);
+          });
         });
         return;
       } else {
