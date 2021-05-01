@@ -1,3 +1,10 @@
+## [11.2.1](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.0...v11.2.1) (2021-05-01)
+
+
+### Fix
+
+* add delay when anchor was added for asyncAnchor ([4cfd5d7](https://github.com/ngx-tour/ngx-tour-core/commit/4cfd5d7cb26b1653a0eea860b02f1692ba0022ef))
+
 # [11.2.0](https://github.com/ngx-tour/ngx-tour-core/compare/v11.1.0...v11.2.0) (2021-04-12)
 
 
