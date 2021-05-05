@@ -4,7 +4,7 @@ import type { UrlSegment } from '@angular/router';
 
 import { TourAnchorDirective } from './tour-anchor.directive';
 import { Subject, Observable, merge as mergeStatic } from 'rxjs';
-import { first, map, filter } from 'rxjs/operators';
+import { first, map, filter, delay } from 'rxjs/operators';
 
 export interface IStepOption {
   stepId?: string;
@@ -253,7 +253,8 @@ export class TourService<T extends IStepOption = IStepOption> {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationStart),
-        first()
+        first(),
+        delay(0)
       )
       .subscribe(() => {
         if (this.currentStep && this.currentStep.hasOwnProperty('route')) {
