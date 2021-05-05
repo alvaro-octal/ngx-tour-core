@@ -1,3 +1,10 @@
+## [11.2.2](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.1...v11.2.2) (2021-05-05)
+
+
+### Fix
+
+* issue with redirect after navigation to other route ([c6caf5d](https://github.com/ngx-tour/ngx-tour-core/commit/c6caf5d17143876871dbbbf87e846cb661a11893))
+
 ## [11.2.1](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.0...v11.2.1) (2021-05-01)
 
 
