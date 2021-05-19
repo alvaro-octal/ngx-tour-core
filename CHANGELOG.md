@@ -1,3 +1,10 @@
+## [11.2.4](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.3...v11.2.4) (2021-05-19)
+
+
+### Fix
+
+* remove subject from asyncAnchor list (not nulling it) ([895dc51](https://github.com/ngx-tour/ngx-tour-core/commit/895dc5184f42c443640df9dcd9d035205a974cfa))
+
 ## [11.2.3](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.2...v11.2.3) (2021-05-19)
 
 
