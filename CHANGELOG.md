@@ -1,3 +1,10 @@
+## [11.2.3](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.2...v11.2.3) (2021-05-19)
+
+
+### Fix
+
+* issue causing to show an asyncAnchor multiple times ([3123c83](https://github.com/ngx-tour/ngx-tour-core/commit/3123c83986a771742b7b8dee83d9f752dda674fe))
+
 ## [11.2.2](https://github.com/ngx-tour/ngx-tour-core/compare/v11.2.1...v11.2.2) (2021-05-05)
 
 
