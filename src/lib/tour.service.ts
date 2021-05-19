@@ -271,7 +271,7 @@ export class TourService<T extends IStepOption = IStepOption> {
         this.eventsAnchorRegister[step.anchorId].subscribe(() => {
           anchor = this.anchors[step && step.anchorId];
           this.eventsAnchorRegister[step.anchorId].unsubscribe();
-          this.eventsAnchorRegister[step.anchorId] = null;
+          delete this.eventsAnchorRegister[step.anchorId];
           setTimeout(() => {
             anchor.showTourStep(step);
             this.stepShow$.next(step);
